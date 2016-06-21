@@ -18,7 +18,7 @@
   </property>-->
   <property>
     <name>dt.application.MyFirstApplication.operator.LineReader.prop.directory</name>
-    <value>file:///home/harsh/apex-malhar/demos/myword/src/main/resources/</value>
+    <value>/tmp/</value>
     <!--<value>/harsh/test/</value>-->
   </property>
  <!-- <property>

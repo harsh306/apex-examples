@@ -9,11 +9,11 @@ import java.util.HashMap;
  */
 public class MyFileWriter extends AbstractFileOutputOperator<HashMap<String, Integer>> {
     public MyFileWriter (){
-        filePath ="/harsh/test";
+        filePath ="/tmp/";
     }
     @Override
     protected String getFileName(HashMap<String, Integer> s) {
-        return "wordcount.txt";
+        return "wordcountharsh.txt";
     }
 
     @Override
