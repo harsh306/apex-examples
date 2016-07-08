@@ -3,6 +3,10 @@ package oeg.apex.clock;
 import com.datatorrent.api.DefaultInputPort;
 import com.datatorrent.api.DefaultOutputPort;
 import com.datatorrent.common.util.BaseOperator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
 /**
  * Created by harsh on 21/6/16.
@@ -24,6 +28,11 @@ public class HandsAngle extends BaseOperator {
         @Override
         public void process(String s) {
             String[] a =s.split(" ");
+            Marker m= MarkerFactory.getMarker("ERROR");
+            Logger logger= LoggerFactory.getLogger(HandsAngle.class);
+            logger.info("Calculte angle here");
+            logger.debug(m,"you have an error");
+
             String angle =AngleCalculator(a[0],a[1]);
             outputPort.emit(angle);
         }

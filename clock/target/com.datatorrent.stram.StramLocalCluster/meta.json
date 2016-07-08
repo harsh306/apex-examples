@@ -1,1 +1,0 @@
-{"attributes":{"APPLICATION_PATH":"file:\/home\/harsh\/apex-core\/demos\/clock\/target\/com.datatorrent.stram.StramLocalCluster\/","STREAMING_WINDOW_SIZE_MILLIS":1000,"STORAGE_AGENT":"com.datatorrent.common.util.AsyncFSStorageAgent@54ace075","APPLICATION_NAME":"MyFirstApplication","APPLICATION_ID":"app_local_1466502030851","CHECKPOINT_WINDOW_COUNT":30},"metrics":{}}
