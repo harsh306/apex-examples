@@ -64,11 +64,9 @@ public class BuildRecommendation extends BaseOperator implements LoggerFactory {
                     Vector itemPref=userMap.get(uid);
                     Double answer=0.0;
                     //String x[]= tuple.getItemPair().split(":");
-                    int x,y;
-                    ByteBuffer buffer = ByteBuffer.allocate(8).putLong(tuple.getItemPair());
-                    x = buffer.getInt(0);
-                    y = buffer.getInt(1);
-                    userItem.append("::"+tuple.getItemPair() + " ");
+                    int x = (int)(tuple.getItemPair().longValue() >> 32);
+                    int y = (int)tuple.getItemPair().longValue();
+                    userItem.append(" :: "+x+":"+y +" ");
                     double pref = itemPref.get(y);
                     answer = pref * tuple.getCoCount().doubleValue();
                     userItem.append(answer.toString()+"\n");

@@ -31,7 +31,9 @@ public class CreateItemPair extends BaseOperator implements LoggerFactory {
                 Iterator<Vector.Element> it2=iterable1.iterator();
                 while(it2.hasNext()){
                     Integer index2=it2.next().index();
-                    long l = ByteBuffer.allocate(8).putInt(index1.intValue()).putInt(index2.intValue()).getLong(0);
+                    //long l = ByteBuffer.allocate(8).putInt(index1.intValue()).putInt(index2.intValue()).getLong(0);
+                    long l = (((long)index1.intValue()) << 32) | (index2.intValue() & 0xffffffffL);
+
                     coOccures.emit(l);
                 }
                }

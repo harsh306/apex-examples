@@ -20,10 +20,15 @@ public class Test {
 
     public static void main(String args[]){
         int x=9607597;
-        int y=67890;
-        long l = ByteBuffer.allocate(8).putInt(x).putInt(y).getLong(0);
+        int y=500998;
+       /* long l = ByteBuffer.allocate(16).putInt(x).putInt(y).getLong(0);
 
-        ByteBuffer buffer = ByteBuffer.allocate(8).putLong(l);
-        System.out.println(l);
+        ByteBuffer buffer = ByteBuffer.allocate(16).putLong(l);
+        x = buffer.getInt(0);
+        y = buffer.getInt(1);*/
+        long l = (((long)x) << 32) | (y & 0xffffffffL);
+        int a = (int)(l >> 32);
+        int b = (int)l;
+        System.out.println(l+" x"+a+" y"+b);
     }
 }
