@@ -91,7 +91,7 @@ public class ReadFile extends AbstractFileInputOperator<String> implements Logge
         else {
             output.emit(map);
             try {
-                Thread.sleep(500);
+                Thread.sleep(510);
             } catch (InterruptedException e) {
             }
 
