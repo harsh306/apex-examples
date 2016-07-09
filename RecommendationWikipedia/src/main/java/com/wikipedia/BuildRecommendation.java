@@ -63,7 +63,6 @@ public class BuildRecommendation extends BaseOperator implements LoggerFactory {
                     userItem.append(""+uid);
                     Vector itemPref=userMap.get(uid);
                     Double answer=0.0;
-                    //String x[]= tuple.getItemPair().split(":");
                     int x = (int)(tuple.getItemPair().longValue() >> 32);
                     int y = (int)tuple.getItemPair().longValue();
                     userItem.append(" :: "+x+":"+y +" ");
@@ -92,27 +91,5 @@ public class BuildRecommendation extends BaseOperator implements LoggerFactory {
         log.info(s);
         return  log;
     }
-    /*
-    public ArrayList<String> getCoCount(int Yindex, Map.Entry<String,Integer> tuple) {
 
-        ArrayList<String> a = new ArrayList<>();
-        Iterator<String> keyIterator = tuple.keySet().iterator();
-        // makeNewLoggerInstance("tuple :" +tuple);
-        while (keyIterator.hasNext()) {
-            String key = keyIterator.next();
-            Pattern pattern = Pattern.compile("(\\d+)");
-            Matcher m = pattern.matcher(key);
-            m.find();
-            Integer X = Integer.parseInt(m.group());
-            m.find();
-            Integer Y = Integer.parseInt(m.group());
-            Integer co_count = tuple.get(key);
-            //makeNewLoggerInstance("Y ::" +Y+ " X ::"+X);
-            if (Y.intValue() == Yindex)
-                a.add(""+co_count+" "+X +" "+Y);
-
-        }
-        makeNewLoggerInstance("for "+Yindex+"= :" +a);
-        return a;
-    }*/
 }
