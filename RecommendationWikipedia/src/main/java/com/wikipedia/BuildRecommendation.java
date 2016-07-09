@@ -4,20 +4,16 @@ import com.datatorrent.api.Context;
 import com.datatorrent.api.DefaultInputPort;
 import com.datatorrent.api.DefaultOutputPort;
 import com.datatorrent.common.util.BaseOperator;
-import com.sun.tools.javac.util.Assert;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 
-public class BuildRecommendation extends BaseOperator implements LoggerFactory {
+public class BuildRecommendation extends BaseOperator {
     Vector R;
     List<HashMap<Integer,Vector>> userMaps;
     Integer cnt;
@@ -83,13 +79,6 @@ public class BuildRecommendation extends BaseOperator implements LoggerFactory {
     @Override
     public void endWindow() {
 
-    }
-
-    @Override
-    public Logger makeNewLoggerInstance(String s) {
-        Logger log =Logger.getLogger(BuildRecommendation.class);
-        log.info(s);
-        return  log;
     }
 
 }

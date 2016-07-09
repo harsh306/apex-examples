@@ -4,14 +4,8 @@ import com.datatorrent.api.Context;
 import com.datatorrent.api.DefaultInputPort;
 import com.datatorrent.api.DefaultOutputPort;
 import com.datatorrent.lib.util.BaseUniqueKeyCounter;
-import com.esotericsoftware.kryo.serializers.FieldSerializer;
-import com.esotericsoftware.kryo.serializers.JavaSerializer;
 import org.apache.commons.lang.mutable.MutableInt;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 
-import java.lang.reflect.Array;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -19,7 +13,7 @@ import java.util.Map;
  * Created by harsh on 1/7/16.
  */
 
-public class PairKeyCounter extends BaseUniqueKeyCounter<Long> implements LoggerFactory {
+public class PairKeyCounter extends BaseUniqueKeyCounter<Long> {
      private boolean change=false;
     int oId;
 
@@ -74,11 +68,6 @@ public class PairKeyCounter extends BaseUniqueKeyCounter<Long> implements Logger
         }
         map.clear();
     }
-    @Override
-    public Logger makeNewLoggerInstance(String s) {
-        Logger log= Logger.getLogger(PairKeyCounter.class);
-        log.info(s);
-        return log;
-    }
+
 }
 

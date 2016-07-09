@@ -4,8 +4,6 @@ import com.datatorrent.api.Context;
 import com.datatorrent.api.DefaultOutputPort;
 import com.datatorrent.lib.io.fs.AbstractFileInputOperator;
 import org.apache.hadoop.fs.Path;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 
@@ -20,7 +18,7 @@ import java.util.regex.Pattern;
 /**
  * Created by anurag on 20/6/16.
  */
-public class ReadFile extends AbstractFileInputOperator<String> implements LoggerFactory{
+public class ReadFile extends AbstractFileInputOperator<String> {
     public transient final DefaultOutputPort<HashMap<Integer,Vector>> output = new DefaultOutputPort<>();
     public transient final DefaultOutputPort<HashMap<Integer,Vector>> vector = new DefaultOutputPort<>();
     private transient BufferedReader br;
@@ -83,10 +81,8 @@ public class ReadFile extends AbstractFileInputOperator<String> implements Logge
             userVector.set(Integer.parseInt(m.group()), pref);
         }
         map.put(userId, userVector);
-//        makeNewLoggerInstance("T "+toggle.toString()+" P "+prefRead.toString());
         if(!prefRead){
             vector.emit(map);
-//            makeNewLoggerInstance(map.size()+" Vector ");
         }
         else {
             output.emit(map);
@@ -95,7 +91,6 @@ public class ReadFile extends AbstractFileInputOperator<String> implements Logge
             } catch (InterruptedException e) {
             }
 
-//            makeNewLoggerInstance(map.size()+" Output ");
         }
 
 
@@ -105,12 +100,5 @@ public class ReadFile extends AbstractFileInputOperator<String> implements Logge
     protected void closeFile(InputStream is) throws IOException {
         super.closeFile(is);
         br.close();
-    }
-
-    @Override
-    public Logger makeNewLoggerInstance(String s) {
-        Logger log =Logger.getLogger(ReadFile.class);
-        log.info(s);
-        return log;
     }
 }

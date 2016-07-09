@@ -3,19 +3,15 @@ package com.wikipedia;
 import com.datatorrent.api.DefaultInputPort;
 import com.datatorrent.api.DefaultOutputPort;
 import com.datatorrent.common.util.BaseOperator;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.apache.mahout.math.Vector;
 
-
-import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
 
 /**
  * Created by anurag on 21/6/16.
  */
-public class CreateItemPair extends BaseOperator implements LoggerFactory {
+public class CreateItemPair extends BaseOperator {
     public  transient  final DefaultOutputPort<Long> coOccures= new DefaultOutputPort<>();
 
     public transient final DefaultInputPort<HashMap<Integer,Vector>> hashInput=new DefaultInputPort<HashMap<Integer, Vector>>() {
@@ -39,11 +35,4 @@ public class CreateItemPair extends BaseOperator implements LoggerFactory {
 
 
     };
-
-    @Override
-    public Logger makeNewLoggerInstance(String s) {
-        Logger log = Logger.getLogger(CreateItemPair.class);
-        log.info(s);
-        return log;
-    }
 }
