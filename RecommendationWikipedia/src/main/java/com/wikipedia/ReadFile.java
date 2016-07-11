@@ -87,7 +87,7 @@ public class ReadFile extends AbstractFileInputOperator<String> {
         else {
             output.emit(map);
             try {
-                Thread.sleep(510);
+                Thread.sleep(680);
             } catch (InterruptedException e) {
             }
 
