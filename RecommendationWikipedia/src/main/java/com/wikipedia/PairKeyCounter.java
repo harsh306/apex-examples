@@ -64,9 +64,16 @@ public class PairKeyCounter extends BaseUniqueKeyCounter<Long> {
                 mye.setItemPair(k.getKey());
                 mye.setCoCount(k.getValue());
                 outputPort.emit(mye);
+
             }
+
         }
         map.clear();
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
