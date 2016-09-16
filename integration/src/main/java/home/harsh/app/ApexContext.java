@@ -20,6 +20,10 @@ import scala.Tuple2;
 import scala.collection.Map;
 
 public class ApexContext extends SparkContext{
+    
+    public ApexContext(){
+
+    }
     @Override
     public void stop() {
         super.stop();
