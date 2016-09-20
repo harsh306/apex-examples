@@ -3,44 +3,38 @@ package home.harsh.app;
 /**
  * Created by harsh on 14/9/16.
  */
-import org.apache.spark.*;
-import org.apache.spark.api.java.JavaPairRDD;
-import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.api.java.function.Function2;
-import org.apache.spark.api.java.function.PairFunction;
-import org.apache.spark.sql.*;
 
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Pattern;
-import scala.Tuple2;
-import scala.collection.Map;
+import org.apache.spark.SparkConf;
+import org.apache.spark.SparkContext;
+import org.apache.spark.mllib.regression.LabeledPoint;
+import org.apache.spark.mllib.util.MLUtils;
+import org.apache.spark.rdd.RDD;
 
 public class ApexContext extends SparkContext{
-    
+    ApexContext ac;
     public ApexContext(){
+         ac= (ApexContext) SparkContext.getOrCreate();
 
     }
-    @Override
-    public void stop() {
-        super.stop();
-    }
+    public RDD<LabeledPoint>  ReturnRDD(){
 
-    @Override
-    public Map<String, Tuple2<Object, Object>> getExecutorMemoryStatus() {
-        return super.getExecutorMemoryStatus();
+        
+        RDD<LabeledPoint> toRDD = MLUtils.loadLibSVMFile(ac,"../path/" );
+        return toRDD;
     }
-
-    @Override
-    public boolean isLocal() {
-        return super.isLocal();
-    }
-
     @Override
     public SparkConf getConf() {
         return super.getConf();
+    }
+
+
+    @Override
+    public RDD<String> textFile(String path, int minPartitions) {
+        return super.textFile(path, minPartitions);
+    }
+
+    @Override
+    public int textFile$default$2() {
+        return super.textFile$default$2();
     }
 }
